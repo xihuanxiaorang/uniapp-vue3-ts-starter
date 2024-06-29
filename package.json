@@ -41,6 +41,14 @@
     "type-check": "vue-tsc --noEmit",
     "prepare": "husky"
   },
+  "lint-staged": {
+    "**/*.{html,vue,ts,cjs,json,md}": [
+      "prettier --write"
+    ],
+    "**/*.{vue,js,ts,jsx,tsx}": [
+      "eslint --fix"
+    ]
+  },
   "dependencies": {
     "@dcloudio/uni-app": "3.0.0-4010520240507001",
     "@dcloudio/uni-app-plus": "3.0.0-4010520240507001",
@@ -74,6 +82,7 @@
     "eslint-plugin-vue": "^9.26.0",
     "globals": "^15.6.0",
     "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
     "prettier": "3.3.2",
     "typescript": "^4.9.4",
     "typescript-eslint": "^7.14.1",
