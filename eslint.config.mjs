@@ -5,8 +5,8 @@ import pluginVue from 'eslint-plugin-vue'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 
 export default [
-  { files: ['**/*.{js,mjs,cjs,ts,vue}'] },
-  { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
+  {files: ['**/*.{js,mjs,cjs,ts,vue}']},
+  {languageOptions: {globals: {...globals.browser, ...globals.node}}},
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   ...pluginVue.configs['flat/recommended'],
@@ -19,7 +19,8 @@ export default [
   // 配置规则
   {
     rules: {
-      'vue/multi-word-component-names': 'off', // [!code ++]
+      'vue/multi-word-component-names': 'off',
+      'no-undef': 'off',
     },
   },
 ]

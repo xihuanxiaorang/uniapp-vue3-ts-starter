@@ -12,8 +12,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
 const swiperList = ref([
   'https://unpkg.com/wot-design-uni-assets/redpanda.jpg',
   'https://unpkg.com/wot-design-uni-assets/capybara.jpg',
