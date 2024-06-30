@@ -53,6 +53,9 @@ dependencies:
   vue-i18n:
     specifier: ^9.1.9
     version: 9.13.1(vue@3.4.31)
+  wot-design-uni:
+    specifier: ^1.2.28
+    version: 1.2.28(vue@3.4.31)
 
 devDependencies:
   '@commitlint/cli':
@@ -124,6 +127,9 @@ devDependencies:
   prettier:
     specifier: 3.3.2
     version: 3.3.2
+  sass:
+    specifier: ^1.77.6
+    version: 1.77.6
   stylelint:
     specifier: ^16.6.1
     version: 16.6.1(typescript@4.9.5)
@@ -153,7 +159,7 @@ devDependencies:
     version: 7.14.1(eslint@9.6.0)(typescript@4.9.5)
   vite:
     specifier: 5.2.8
-    version: 5.2.8(@types/node@20.14.9)(terser@5.31.1)
+    version: 5.2.8(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
   vue-tsc:
     specifier: ^1.0.24
     version: 1.8.27(typescript@4.9.5)
@@ -2271,7 +2277,7 @@ packages:
       picocolors: 1.0.1
       terser: 5.31.1
       unplugin-auto-import: 0.16.7
-      vite: 5.2.8(@types/node@20.14.9)(terser@5.31.1)
+      vite: 5.2.8(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
     transitivePeerDependencies:
       - '@nuxt/kit'
       - '@vueuse/core'
@@ -3657,7 +3663,7 @@ packages:
       regenerator-runtime: 0.14.1
       systemjs: 6.15.1
       terser: 5.31.1
-      vite: 5.2.8(@types/node@20.14.9)(terser@5.31.1)
+      vite: 5.2.8(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3672,7 +3678,7 @@ packages:
       '@babel/core': 7.24.7
       '@babel/plugin-transform-typescript': 7.24.7(@babel/core@7.24.7)
       '@vue/babel-plugin-jsx': 1.2.2(@babel/core@7.24.7)
-      vite: 5.2.8(@types/node@20.14.9)(terser@5.31.1)
+      vite: 5.2.8(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
       vue: 3.4.31(typescript@4.9.5)
     transitivePeerDependencies:
       - supports-color
@@ -3685,7 +3691,7 @@ packages:
       vite: ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 5.2.8(@types/node@20.14.9)(terser@5.31.1)
+      vite: 5.2.8(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
       vue: 3.4.31(typescript@4.9.5)
 
   /@volar/language-core@1.11.1:
@@ -5878,6 +5884,9 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
+  /immutable@4.3.6:
+    resolution: {integrity: sha512-Ju0+lEMyzMVZarkTn/gqRpdqd5dOPaz1mCZ0SH3JV6iFw81PldE/PEB1hWVEA288HPt4WXW8O7AWxB10M+03QQ==}
+
   /import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -7889,6 +7898,15 @@ packages:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
     dev: true
 
+  /sass@1.77.6:
+    resolution: {integrity: sha512-ByXE1oLD79GVq9Ht1PeHWCPMPB8XHpBuz1r85oByKHjZY6qV6rWnQovQzXJXuQ/XyE1Oj3iPk3lo28uzaRA2/Q==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
+    dependencies:
+      chokidar: 3.6.0
+      immutable: 4.3.6
+      source-map-js: 1.2.0
+
   /sax@1.4.1:
     resolution: {integrity: sha512-+aWOz7yVScEGoKNd4PA10LZ8sk0A/z5+nXQG5giUO5rprX9jgYsTdov9qCchZiPIZezbZH+jRut8nPodFAX4Jg==}
     dev: false
@@ -8688,7 +8706,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite@5.2.8(@types/node@20.14.9)(terser@5.31.1):
+  /vite@5.2.8(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1):
     resolution: {integrity: sha512-OyZR+c1CE8yeHw5V5t59aXsUPPVTHMDjEZz8MgguLL/Q7NblxhZUlTu9xSPqlsUO/y+X7dlU05jdhvyycD55DA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -8720,6 +8738,7 @@ packages:
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.18.0
+      sass: 1.77.6
       terser: 5.31.1
     optionalDependencies:
       fsevents: 2.3.3
@@ -8878,6 +8897,15 @@ packages:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /wot-design-uni@1.2.28(vue@3.4.31):
+    resolution: {integrity: sha512-f7e2BdSNwrLL+45Ucxp+o7WXlwfzWfdKQ9OS/V5Ny05+p8nrij89SmXbXAPPCpcKxhsn1oSZb8f1hsXiINZWOg==}
+    engines: {HBuilderX: ^3.8.7}
+    peerDependencies:
+      vue: '>=3.2.47'
+    dependencies:
+      vue: 3.4.31(typescript@4.9.5)
+    dev: false
 
   /wrap-ansi@7.0.0:
     resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
