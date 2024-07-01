@@ -22,7 +22,7 @@ const swiperList = ref([
   'https://unpkg.com/wot-design-uni-assets/meng.jpg',
 ])
 
-const count = useStorage('count', 0)
+const { count } = storeToRefs(useCounterStore())
 </script>
 
 <style lang="scss" scoped></style>
