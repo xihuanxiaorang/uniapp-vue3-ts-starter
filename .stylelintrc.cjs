@@ -34,7 +34,7 @@ module.exports = {
     'unit-no-unknown': [
       true,
       {
-        ignoreUnits: ['rpx'],
+        ignoreUnits: ['rpx', 'upx'],
       },
     ],
     // 处理小程序page标签不认识的问题
