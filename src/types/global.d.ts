@@ -2,7 +2,7 @@ declare global {
   /**
    * 统一响应结构体
    */
-  interface Result<T> {
+  interface Result<T = any> {
     /**
      * 响应码
      */

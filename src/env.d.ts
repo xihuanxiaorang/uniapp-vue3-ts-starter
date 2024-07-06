@@ -2,7 +2,7 @@
 
 declare module '*.vue' {
   import { DefineComponent } from 'vue'
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
+  // eslint-disable-next-line @typescript-eslint/ban-types
   const component: DefineComponent<{}, {}, any>
   export default component
 }
@@ -12,6 +12,10 @@ interface ImportMetaEnv {
   readonly VITE_APP_TITLE: string
   /** 微信小程序AppID */
   readonly VITE_WX_APPID: string
+  /** API 地址 */
+  readonly VITE_APP_API_URL: string
+  /** 请求超时时间 */
+  readonly VITE_APP_API_TIMEOUT: number
   // 更多环境变量...
 }
 

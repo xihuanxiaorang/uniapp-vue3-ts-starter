@@ -137,30 +137,19 @@ const loginBtnDisabled = computed(() => {
   )
 })
 /**
- * 校验短信验证码
- */
-const validateSmsCode = async () => {
-  const success = await validateSmsCodeApi({
-    mobile: loginForm.mobile,
-    smsCode: loginForm.smsCode,
-  })
-  if (!success) {
-    uni.showToast({
-      title: '验证码错误',
-      icon: 'none',
-    })
-    return false
-  }
-  return true
-}
-/**
  * 登录
  */
 const login = async () => {
   // 校验手机号
   if (!validatePhone()) return
-  // 校验验证码
-  if (!(await validateSmsCode())) return
+  // 校验短信验证码
+  const success = await validateSmsCodeApi({
+    mobile: loginForm.mobile,
+    smsCode: loginForm.smsCode,
+  })
+  if (!success) {
+    return
+  }
   // 开始登录
   isLogging.value = true
   uni.login({
