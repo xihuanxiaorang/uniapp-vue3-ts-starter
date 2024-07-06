@@ -1,100 +1,101 @@
 <template>
   <view class="login-container">
-    <image class="logo" mode="aspectFit" src="@/static/images/login.png" />
-    <view class="title">LOGO区域</view>
+    <view class="logo-container">
+      <view class="logo-wrapper">
+        <image class="logo" src="@/static/logo.png" />
+        <text class="title font-medium">一日清单</text>
+      </view>
+      <text class="sub-title">欢迎登录进行使用！</text>
+    </view>
     <view class="login-form">
-      <input
-        v-model.trim="loginForm.username"
-        class="login-input"
-        placeholder="请输入用户名"
-      />
-      <input
-        v-model.trim="loginForm.password"
-        class="login-input"
-        password
-        placeholder="请输入密码"
-      />
-      <view class="login-label">忘记密码？</view>
-      <button class="login-btn" @click="login">立即登录</button>
-      <navigator
-        class="login-label"
-        hover-class="none"
-        url="/pages/register/index"
-        >还没有账号？点此注册.
-      </navigator>
+      <view class="form-item">
+        <input class="phone" placeholder="请输入手机号" type="number" />
+      </view>
+      <view class="form-item">
+        <input class="code" placeholder="请输入验证码" type="number" />
+        <text class="code-btn">获取验证码</text>
+      </view>
+      <button class="login-btn">登录</button>
     </view>
   </view>
 </template>
 
-<script lang="ts" setup>
-const loginForm = reactive({
-  username: 'admin',
-  password: '123456',
-})
-
-const login = () => {
-  console.log(loginForm)
-}
-</script>
-
+<script lang="ts" setup></script>
 <style lang="scss" scoped>
 .login-container {
-  position: relative;
-  padding: 0 100upx;
+  .logo-container {
+    margin-top: 285rpx;
+    margin-left: 60rpx;
 
-  .logo {
-    width: 100%;
-    height: 310upx;
-  }
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
 
-  .title {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    margin-left: -100upx;
-    font-size: 68upx;
-    line-height: 360upx;
-    color: #fff;
-    text-align: center;
+      .logo {
+        width: 66rpx;
+        height: 66rpx;
+      }
+
+      .title {
+        margin-left: 20rpx;
+        font-size: 54rpx;
+        font-weight: 500;
+        color: #1f2329;
+      }
+    }
+
+    .sub-title {
+      margin-top: 14rpx;
+      font-size: 36rpx;
+      font-weight: 500;
+      color: #646a73;
+      letter-spacing: 1rpx;
+    }
   }
 
   .login-form {
-    margin-top: 300upx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 101rpx;
 
-    .login-input {
-      padding: 20upx 40upx;
-      margin-top: 30upx;
-      font-size: 36upx;
-      background: #e2f5fc;
-      border-radius: 100upx;
-    }
+    .form-item {
+      display: flex;
+      align-items: center;
+      width: 630rpx;
+      height: 100rpx;
+      margin-bottom: 50rpx;
+      font-size: 30rpx;
+      color: #8f959e;
+      background: #f7f9fc;
+      border-radius: 50rpx;
 
-    .input-placeholder,
-    .login-input {
-      color: #94afce;
-    }
+      input {
+        margin-left: 40rpx;
 
-    .login-label {
-      padding: 60upx 0;
-      font-size: 30upx;
-      color: #a7b6d0;
-      text-align: center;
+        &.code {
+          flex: 1;
+        }
+      }
+
+      .code-btn {
+        margin-right: 40rpx;
+        font-size: 30rpx;
+        color: #1456f0;
+      }
     }
 
     .login-btn {
-      font-size: 36upx;
-      color: #fff;
-      background: #ff65a3;
-      border: 0;
-      border-radius: 100upx;
-
-      &:after {
-        border: 0;
-      }
-
-      &.button-hover {
-        transform: translate(1upx, 1upx);
-      }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 630rpx;
+      height: 100rpx;
+      margin-top: 70rpx;
+      font-size: 30rpx;
+      color: #ffffff;
+      background: #1456f0;
+      border-radius: 50rpx;
     }
   }
 }

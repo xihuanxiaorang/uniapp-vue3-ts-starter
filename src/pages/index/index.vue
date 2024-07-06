@@ -11,6 +11,10 @@
   </wd-grid>
 
   <wd-button @click="count++">+1</wd-button>
+
+  <navigator hover-class="navigator-hover" url="/pages/login/index">
+    <wd-button>跳转到登陆页面</wd-button>
+  </navigator>
 </template>
 
 <script lang="ts" setup>

@@ -15,7 +15,7 @@
     {
       "path": "pages/login/index",
       "style": {
-        "navigationBarTitleText": "登录页"
+        "navigationBarTitleText": "账户登录"
       }
     },
     {
