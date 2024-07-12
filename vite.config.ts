@@ -7,7 +7,7 @@ import path from 'node:path'
 const pathSrc = path.resolve(__dirname, 'src')
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(async ({ command, mode }) => {
   // mode: 区分生产环境还是开发环境
   console.log('command, mode -> ', command, mode)
   // pnpm dev:h5 时得到 => serve development
@@ -24,6 +24,8 @@ export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, path.resolve(process.cwd(), 'env'))
   const { VITE_SHOW_SOURCEMAP, VITE_DELETE_CONSOLE } = env
   console.log('环境变量 env -> ', env)
+
+  const UnoCSS = (await import('unocss/vite')).default
   return {
     // 自定义env目录
     envDir: './env',
@@ -34,7 +36,16 @@ export default defineConfig(({ command, mode }) => {
       },
     },
     plugins: [
-      uni(),
+      /**
+       * unocss
+       * @see https://github.com/antfu/unocss
+       * see unocss.config.ts for config
+       */
+      UnoCSS(),
+      /**
+       * unplugin-auto-import 按需 import
+       * @see https://github.com/antfu/unplugin-auto-import
+       */
       AutoImport({
         // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
         // 自动导入 @vueuse/core 相关函数，如：useStorage、useTitle 等
@@ -48,6 +59,7 @@ export default defineConfig(({ command, mode }) => {
         // 指定自动导入函数TS类型声明文件路径，为true时在项目根目录自动创建，为false时关闭自动生成
         dts: path.resolve(pathSrc, 'types', 'auto-import.d.ts'),
       }),
+      uni(),
     ],
     build: {
       // 方便非h5端调试

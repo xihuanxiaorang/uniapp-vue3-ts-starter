@@ -1,16 +1,20 @@
 <template>
-  <view class="login-container">
-    <view class="logo-container">
-      <image class="logo" src="@/static/logo.png" />
-      <text class="title">时光清单</text>
-      <text class="desc">一款记录美好时光的任务管理工具</text>
+  <view class="flex flex-col items-center w-full h-full mb-[100rpx]">
+    <view class="flex flex-col items-center mt-[108rpx]">
+      <image class="w-[176rpx] h-[172rpx] mb-[38rpx]" src="@/static/logo.png" />
+      <text class="mb-[16rpx] text-[32rpx] font-500 text-[#3d3d3d]"
+        >时光清单
+      </text>
+      <text class="text-[20rpx] text-[#999999]"
+        >一款记录美好时光的任务管理工具
+      </text>
     </view>
-    <view class="login-form">
+    <view class="flex flex-col items-center mt-[124rpx]">
       <view class="form-item">
         <input
           v-model.trim="loginForm.mobile"
           :maxlength="11"
-          class="phone"
+          class="flex-1 mx-[40rpx]"
           placeholder="请输入手机号"
           type="number"
         />
@@ -19,33 +23,37 @@
         <input
           v-model.trim="loginForm.smsCode"
           :maxlength="6"
-          class="code"
+          class="flex-1 mx-[40rpx]"
           placeholder="请输入验证码"
           type="number"
         />
         <button
           :disabled="codeBtnDisabled"
-          class="code-btn"
+          class="flex items-center justify-center w-[210rpx] h-[64rpx] mr-[40rpx] text-[24rpx] !text-[#ffffff] !bg-[#1456f0] rd-[100rpx] code-btn"
           @click="sendSmsCode"
         >
           {{ isCodeSent ? remainingTime + 's可后重发' : '获取验证码' }}
         </button>
       </view>
-      <button :disabled="loginBtnDisabled" class="login-btn" @click="login">
+      <button
+        :disabled="loginBtnDisabled"
+        class="flex items-center justify-center w-[630rpx] h-[100rpx] mt-[70rpx] text-[30rpx] !text-[#ffffff] !bg-[#1456f0] rd-[50rpx] login-btn"
+        @click="login"
+      >
         登录
       </button>
     </view>
-    <view class="terms-container">
+    <view class="flex items-center text-[24rpx] text-[#acacac] fixed-bottom">
       <text>登录代表您已同意</text>
       <navigator
-        class="terms-link"
+        class="text-[#1574e5]"
         hover-class="none"
         url="/pages/user-agreement/index"
         >《平台服务协议》
       </navigator>
       <text>和</text>
       <navigator
-        class="terms-link"
+        class="text-[#1574e5]"
         hover-class="none"
         url="/pages/privacy-policy/index"
       >
@@ -174,107 +182,21 @@ const login = async () => {
 }
 </script>
 <style lang="scss" scoped>
-.login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.form-item {
+  @apply flex items-center w-[630rpx] h-[100rpx] mb-[50rpx] text-[30rpx] text-[#8f959e] bg-[#f7f9fc] rd-[50rpx];
+}
 
-  .logo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 108rpx;
-
-    .logo {
-      width: 176rpx;
-      height: 172rpx;
-      margin-bottom: 38rpx;
-    }
-
-    .title {
-      margin-bottom: 16rpx;
-      font-size: 32rpx;
-      font-weight: 500;
-      color: #3d3d3d;
-    }
-
-    .desc {
-      font-size: 20rpx;
-      color: #999999;
-    }
+.login-btn,
+.code-btn {
+  &[disabled] {
+    opacity: 0.5;
   }
+}
 
-  .login-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 170rpx;
-
-    .form-item {
-      display: flex;
-      align-items: center;
-      width: 630rpx;
-      height: 100rpx;
-      margin-bottom: 50rpx;
-      font-size: 30rpx;
-      color: #8f959e;
-      background: #f7f9fc;
-      border-radius: 50rpx;
-
-      input {
-        margin-left: 40rpx;
-
-        &.code {
-          flex: 1;
-        }
-      }
-
-      .code-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 210rpx;
-        height: 64rpx;
-        margin-right: 40rpx;
-        font-size: 24rpx;
-        color: #ffffff;
-        background: #1456f0;
-        border-radius: 100rpx;
-
-        &[disabled] {
-          opacity: 0.5;
-        }
-      }
-    }
-
-    .login-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 630rpx;
-      height: 100rpx;
-      margin-top: 70rpx;
-      font-size: 30rpx;
-      color: #ffffff;
-      background: #1456f0;
-      border-radius: 50rpx;
-
-      &[disabled] {
-        opacity: 0.5;
-      }
-    }
-  }
-
-  .terms-container {
-    display: flex;
-    align-items: center;
-    margin-top: 192rpx;
-    font-size: 24rpx;
-    color: #acacac;
-
-    .terms-link {
-      color: #1574e5;
-    }
-  }
+.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  padding-bottom: constant(safe-area-inset-bottom); /*兼容 IOS<11.2*/
+  padding-bottom: env(safe-area-inset-bottom); /*兼容 IOS>11.2*/
 }
 </style>
